@@ -24,7 +24,6 @@ namespace GameLoops
             Console.ReadKey();
             Console.Clear();
         }
-
         public void PressAnyKey(string s)
         {
             Console.WriteLine("");
@@ -32,7 +31,6 @@ namespace GameLoops
             Console.ReadKey();
             Console.Clear();
         }
-
         public void PressAnyKey(string preS, string s)
         {
             Console.WriteLine("");
