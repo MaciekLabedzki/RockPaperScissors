@@ -17,10 +17,5 @@ namespace Players
             Name = Console.ReadLine();
             Console.WriteLine(Name + " - points: " + Points + " has been created.");
         }
-
-        public void PrintNewTurn(int turn)
-        {
-            Console.WriteLine("Turn number " + turn + " begins for " + Name);
-        }
     }
 }
