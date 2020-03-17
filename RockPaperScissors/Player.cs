@@ -6,15 +6,21 @@ namespace Players
     {
         public string Name;
         public int Points;
+        public string LastMove;
 
         public Player(int playerNum)
         {
-            Console.WriteLine("Please type name of player " + playerNum + ".");
-            Name = Console.ReadLine();
-
+            LastMove = "";
             Points = 0;
 
-            Console.WriteLine(Name + " - points: " + Points + " has been created");
+            Console.Write("Please type name of player " + playerNum + ": ");
+            Name = Console.ReadLine();
+            Console.WriteLine(Name + " - points: " + Points + " has been created.");
+        }
+
+        public void PrintNewTurn(int turn)
+        {
+            Console.WriteLine("Turn number " + turn + " begins for " + Name);
         }
     }
 }

@@ -3,7 +3,7 @@
 /* =============== */
 
 using System;
-using Players;
+using System.Text.RegularExpressions;
 using GameLoops;
 
 public class Program
@@ -15,35 +15,41 @@ public class Program
         int lastChose = 0;
 
         //menu loop
-        while (lastChose != 1)
+        while (true)
         {
-            //Intro
+            //Print Menu
             Console.WriteLine("      Rock Paper Scissors       ");
             Console.WriteLine("");
             Console.WriteLine("Main Menu:");
             Console.WriteLine("[1] Play a new game!");
             Console.WriteLine("[9] Exit Game");
 
-            lastChose = Int32.Parse(Console.ReadLine());
+            //Choose option - if string is not all numbers you cant parse
+            string tmp = Console.ReadLine();
+            if (Regex.IsMatch(tmp, @"^\d+$"))
+                lastChose = Int32.Parse(tmp);
+            else
+                lastChose = 0;
+
             //ClearScreen
             Console.Clear();
-            if (lastChose == 9) return;
+
+            switch (lastChose)
+            {
+                case 1:
+                    //New Game
+                    GameLoop loop = new GameLoop();
+                    break;
+                case 9:
+                    //exit program
+                    return;
+                default:
+                    //accept other choices
+                    Console.WriteLine("Please choose correct option...");
+                    Console.ReadKey();
+                    Console.Clear();
+                    break;
+            }
         }
-
-        //New Game Setup!
-        GameLoop loop = new GameLoop();
-
-        //get player input as text
-        //string PlayerInput = Console.ReadLine();
-        //Console.WriteLine(KeyPressed);
-
-        return;
     }
-}
-
-public enum Moves
-{
-    Rock = 021,
-    Paper = 102,
-    Scissors = 210
 }
